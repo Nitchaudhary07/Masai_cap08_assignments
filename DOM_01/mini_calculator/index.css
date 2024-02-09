@@ -1,0 +1,48 @@
+#input_num{
+    text-align: center;
+};
+
+body{
+   display: flex;
+   justify-content: center; 
+   align-items: center;
+   height: 100vh;
+   margin: 0;
+   border: 1px solit black;
+}
+
+#btn{
+    /* display: flex; */
+   flex-direction: column-reverse;
+   width: 200px;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   margin-left: 550px;
+   margin-top: 20px;
+   
+
+}
+
+#btn button{
+    margin: 5x;
+    color: green;
+    text-shadow: 20px;
+    font-weight: 900;
+    margin-top: 2px;
+}
+
+h1{
+    color: navy;
+}
+
+#input1{
+    color: green;
+    font-weight: 900;
+}
+
+#input2{
+    color: green;
+    font-weight: 900;
+
+}
