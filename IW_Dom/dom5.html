@@ -11,11 +11,22 @@
   <input type="text" id ="name" placeholder="Enter your name">
   <select id="gender">
     <option value="Male">Male</option>
-    <option value="Female">Male</option>
+    <option value="Female">FeMale</option>
   </select>
-  <button>Apply</button>
+  <button id="applyButton">Apply</button>
 </body>
 </html>
 <script>
+  let applyButton = document.getElementById("applyButton");
 
+  applyButton.addEventListener("click",function(){
+
+    let name = document.getElementById("name").value;
+
+    let gender = document.getElementById("gender").value;
+
+    let display = document.getElementById("display");
+
+    display.textContent = `Name: ${name}, Gender: ${gender}`
+  })
 </script>
