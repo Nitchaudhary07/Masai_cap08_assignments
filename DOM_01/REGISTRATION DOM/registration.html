@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration</title>
+</head>
+
+<body>
+    <input type="text" name="name" id="name" placeholder="enter your name ">
+    <select id="gender">
+        <option value="">select gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+    <input type="text" name="email" id="email" placeholder="enter your email">
+    <input type="text" name="mobile" id="mobile" placeholder="enter your mobile number">
+    <hr>
+    <h1 id="dName">NAME</h1>
+    <h2 id="dGender">GENDER</h2>
+    <h3 id="dEmail">EMAIL</h3>
+    <h4 id="dMobile">MOBILE</h4>
+    <hr>
+    <button onclick="showName()">NAME</button>
+    <button onclick="showGender()">GENDER</button>
+    <button onclick="showEmail()">EMAIL</button>
+    <button onclick="showMobile()">MOBILE</button>
+    <button onclick="resetForm()">RESET FORM</button>
+    <button onclick="resetDisplay()">RESET DISPLAY</button>
+    <script type="text/javascript">
+
+        let fname = document.getElementById("name")
+        let gen = document.getElementById("gender")
+        let email = document.getElementById("email")
+        let mobile = document.getElementById("mobile")
+
+        let dname = document.getElementById("dName")
+        let dgen = document.getElementById("dGender")
+        let dmail = document.getElementById("dEmail")
+        let dmobile = document.getElementById("dMobile")
+
+
+        function showName() {
+            dname.innerText = fname.value;
+        }
+
+        function showGender() {
+            dgen.innerText = gen.value;
+        }
+
+        function showEmail() {
+            dmail.innerText = email.value;
+        }
+
+        function showMobile() {
+        
+            dmobile.innerText = mobile.value;
+        }
+
+        function resetForm() {
+           
+            fname.value = "";
+            gen.value = "";
+            email.value = "";
+            mobile.value = "";
+        }
+
+        function resetDisplay() {
+           
+            dname.innerText = "NAME"
+            dgen.innerText = "GENDER"
+            dmail.innerText = "EMAIL"
+            dmobile.innerText = "MOBILE"
+        }
+
+    </script>
+</body>
+
+</html>
