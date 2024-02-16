@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+  </head>
+  <body>
+    <h1>Check your BMI</h1>
+    <h3>Enter your weight and height to check your BMI results</h3>
+    <h3>Put your weight in here(KG)</h3>
+    <input type="number" id="weight" placeholder="Put your weight" />
+    <h3>And your height in here(CM)</h3>
+    <input type="number" id="height" placeholder="Put your height" />
+    <button onclick="myfun()">Calculate BMI</button>
+    <button onclick="clr()">Clear</button>
+    <h2>
+      Your BMI is <span id="bmivalue"> 00 </span> wich means You are
+      <span id="obs">____</span>
+    </h2>
+  </body>
+
+  <script>
+    let height = document.getElementById("height");
+    let weight = document.getElementById("weight");
+    let bmivalue = document.getElementById("bmivalue");
+    let obs = document.getElementById("obs");
+
+    // Here is the formula for manually calculating BMI  BMI = (weight) / (height * height)
+
+    function myfun() {
+      let value = "";
+      let w = weight.value;
+      let h = height.value;
+      let bmi = w / (((h / 100) * h) / 100);
+      bmivalue.innerText = Math.floor(bmi);
+
+      if (bmi <= 18.4) {
+        value = "UnderWeight";
+      } else if (bmi >= 18.5 && bmi <= 24.9) {
+        value = "Normal Weight";
+      } else if (bmi >= 25 && bmi <= 29.9) {
+        value = "Overweight";
+      } else if (bmi >= 30) {
+        value = "Obese";
+      }
+      obs.innerText = value;
+    }
+    function clr() {
+      height.value = "";
+      weight.value = "";
+      bmivalue.innerText = "00";
+      obs.innerText = "____";
+    }
+  </script>
+</html>
