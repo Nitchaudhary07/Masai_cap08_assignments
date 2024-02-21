@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MIN & MAX LEADERBOARD</title>
+    <style>
+      .btn > button {
+        background-color: rgba(0, 0, 0, 0.795);
+        color: white;
+        margin-top: 5px;
+      }
+      * {
+        font-size: 25px;
+      }
+      h1{
+        text-align: center;
+        color:red;
+      }
+      .parent {
+        width: 500px;
+        height: auto;
+        margin: auto;
+        padding: 50px;
+        margin-top: 50px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 15px;
+        display: grid;
+        text-align: center;
+        background-color: aqua;
+      }
+      .child > span > div {
+        background-color: yellowgreen;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        text-align: center;
+        /* display: grid; */
+      }
+      #display {
+        padding-top: 30px;
+        text-align: center;
+        padding-bottom: 31px;
+        background-color: blue;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 20px;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        width: 500px;
+        justify-content: center;
+        margin-left: 420px;
+      }
+      .keypad {
+        display: grid;
+        padding-left: 500px;
+        gap: 6px;
+        /* width: 50px; */
+        grid-template-columns: 100px 100px 100px;
+        text-align: center;
+        color: gray;
+      }
+      .btn {
+        justify-content: center;
+        display: flex;
+        padding: 25px;
+      }
+      .child {
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        gap: 5px;
+        /* padding: 20px; */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Web Min Max Leaderboard</h1>
+    <div class="parent">
+      <div class="child">
+        <span
+          >Min
+          <div id="min">100</div></span
+        >
+        <span
+          >Max
+          <div id="max">120</div></span
+        >
+      </div>
+    </div>
+    <div id="display"></div>
+    <div class="keypad">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>0</button>
+    </div>
+    <div class="btn">
+      <button id="enter">Enter</button>
+    </div>
+  </body>
+  <script>
+    // min id
+    // max id
+    // display id
+    // enter id
+    // clear id
+    let min = document.getElementById("min");
+    let max = document.getElementById("max");
+    let display = document.getElementById("display");
+    let enter = document.getElementById("enter");
+
+    let keypad = document.querySelectorAll(".keypad > button");
+
+    for (let i = 0; i < keypad.length; i++) {
+      keypad[i].addEventListener("click", function () {
+        display.innerText += keypad[i].innerText;
+      });
+    }
+
+    enter.addEventListener("click", function () {
+      if (Number(display.innerText) < Number(min.innerText)) {
+        min.innerText = display.innerText;
+      }
+      if (Number(display.innerText) > Number(max.innerText)) {
+        max.innerText = display.innerText;
+      }
+      display.innerText = "";
+    });
+  </script>
+</html>
