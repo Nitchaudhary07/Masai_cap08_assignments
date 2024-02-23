@@ -1,0 +1,21 @@
+ /* Fill CSS here */
+
+*{
+    background-color: yellowgreen;
+}
+
+
+thead>tr>th {
+  border: 2px solid rgb(169, 6, 6);
+}
+
+tbody>tr>td {
+  border: 2px solid rgb(204, 5, 5);
+}
+
+table {
+  border: 2px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  margin: 10px;
+} 
