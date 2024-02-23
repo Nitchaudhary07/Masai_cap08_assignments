@@ -1,0 +1,30 @@
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+
+
+.data{
+padding-bottom: 5px;
+}
+
+
+*{
+  background-color: yellow;
+}
+
+h1{
+  text-align: center;
+}
