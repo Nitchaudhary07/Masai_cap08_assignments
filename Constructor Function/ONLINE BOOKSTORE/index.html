@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form id="authordata">
+    <input type="text" id="authorName" placeholder="Enter Author Name">
+    <input type="date" id="authorDob">
+    <input type="text" id="authorNation" placeholder="Enter Nationality">
+    <input type="submit">
+  </form>
+
+  <hr>
+
+  <form id="bookdata">
+    <input type="text" id="bookName" placeholder="Enter Book Title">
+    <input type="text" id="bookGenre" placeholder="Book Genre">
+    <input type="text" id="bookPrice" placeholder="Enter Price">
+    <input type="submit">
+  </form>
+
+</body>
+</html>
+
+<script>
+  function Author(name,dob,nation) {
+    this.name = name;
+    this.dob = dob;
+    this.nation = nation;
+  }
+
+  function Book(title,author,genre,price) {
+    this.title = title;
+    this.author = author;
+    this.genre = genre;
+    this.price = price;
+  }
+
+  let myform = document.querySelector("#authordata");
+
+let data = [];
+
+myform.addEventListener("submit",function(e){
+    e.preventDefault();
+    let authorName = document.getElementById("authorName").value;
+    let authorDob = document.getElementById("authorDob").value;
+    let authorNation = document.getElementById("authorNation").value;
+
+    author = new Author(authorName,authorDob,authorNation)
+
+    data.push(author);
+    console.log(data);
+    myform.reset();
+
+})
+
+
+  let bookData = document.querySelector("#bookdata");
+
+  bookData.addEventListener("submit",function(event){
+    event.preventDefault();
+    let bookName =  document.getElementById("bookName").value;
+    let bookGenre =  document.getElementById("bookGenre").value;
+    let bookPrice = document.getElementById("bookPrice").value;
+
+    // let authorName = document.getElementById("authorName").value;
+    // let authorDob = document.getElementById("authorDob").value;
+    // let authorNation = document.getElementById("authorNation").value;
+
+    // author = new Author(authorName,authorDob,authorNation)
+
+
+
+    let book = new Book(bookName,author,bookGenre,bookPrice)
+
+   data = []
+    console.log(book);
+    bookData.reset();
+  })
+</script>
