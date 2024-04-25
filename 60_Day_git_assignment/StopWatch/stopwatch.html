@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stopwatch</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: aqua;
+    }
+    h1{
+        color: blue;
+    }
+    .stopwatch {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    .btn {
+        padding: 5px 10px;
+        font-size: 1em;
+        margin: 0 3px;
+        cursor: pointer;
+        
+    }
+    .btn:hover{
+            background-color: green;
+        }
+</style>
+</head>
+<body>
+    <h1>Stopwatch</h1>
+<div class="stopwatch">00s:00</div>
+<button class="btn" id="startBtn">Start</button>
+<button class="btn" id="pauseBtn">Pause</button>
+<button class="btn" id="resetBtn">Reset</button>
+
+<script>
+    let timer;
+    let millisecond = 0;
+    let seconds = 0;
+    let minutes = 0;
+    let hours = 0;
+    let isRunning = false;
+
+    function startTimer() {
+        if (!isRunning) {
+            timer = setInterval(updateTime, 10); 
+            isRunning = true;
+        }
+    }
+
+    function pauseTimer() {
+        clearInterval(timer);
+        isRunning = false;
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        isRunning = false;
+        millisecond = 0;
+        seconds = 0;
+        minutes = 0;
+        hours = 0;
+        updateTime();
+    }
+
+    function updateTime() {
+        millisecond++;
+        if (millisecond === 100) {
+            millisecond = 0;
+            seconds++;
+        }
+        if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+        }
+        if (minutes === 60) {
+            minutes = 0;
+            hours++;
+        }
+        let displayHours = hours > 0 ? `${hours < 10 ? '0' : ''}${hours}:` : '';
+        let displayMinutes = (hours > 0 || minutes > 0) ? `${minutes < 10 ? '0' : ''}${minutes}:` : '';
+        let displaySeconds = `${seconds < 10 ? '0' : ''}${seconds}:`;
+        let displayMilliseconds = `${millisecond < 10 ? '00' : millisecond < 100 ? '0' : ''}${millisecond}`;
+        document.querySelector('.stopwatch').textContent = `${displayHours}${displayMinutes}${displaySeconds}${displayMilliseconds}`;
+    }
+
+    document.getElementById('startBtn').addEventListener('click', startTimer);
+    document.getElementById('pauseBtn').addEventListener('click', pauseTimer);
+    document.getElementById('resetBtn').addEventListener('click', resetTimer);
+</script>
+</body>
+</html>
