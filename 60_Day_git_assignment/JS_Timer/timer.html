@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS Timer</title>
+<style>
+  
+
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: aqua;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 50px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+/* #timer {
+  font-size: 36px;
+  margin-bottom: 20px;
+} */
+
+.btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#time{
+    text-align: center;
+    font-size: 25px;
+}
+#btn{
+    text-align: center;
+    font-size: 100px;
+}
+
+#hours{
+    height: 25px;
+    width: 125px;
+    border: none;
+    margin-bottom: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+#minutes{
+    height: 25px;
+    width: 125px;
+    border: none;
+    margin-bottom: 15px;
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+#seconds{
+    height: 25px;
+    width: 125px;
+    border: none;
+    margin-bottom: 15px;
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+#timer{
+    margin-bottom: 25px;
+    margin-top: 25px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    font-size: 50px;
+    text-align: center;
+}
+#startBtn{
+    font-size: 25px;
+}
+#pauseBtn{
+    font-size: 25px;
+
+}
+#resetBtn{
+    font-size: 25px;
+
+}
+#startBtn:hover{
+    background-color: #4caf50;
+}
+#pauseBtn:hover{
+    background-color: #4caf50;
+}
+#resetBtn:hover{
+    background-color: #4caf50;
+}
+
+
+</style>
+</head>
+<body>
+
+<div id="time">
+  <label for="hours">Hours:</label>
+  <input type="number" id="hours" min="0" value="0">
+  <label for="minutes">Minutes:</label>
+  <input type="number" id="minutes" min="0" value="0">
+  <label for="seconds">Seconds:</label>
+  <input type="number" id="seconds" min="0" value="0">
+</div>
+
+
+<div id="timer">00:00:00</div>
+<div id="btn">
+  <button id="startBtn">Start</button>
+  <button id="pauseBtn">Pause</button>
+  <button id="resetBtn">Reset</button>
+</div>
+
+<script>
+  let timerInterval;
+  let totalSeconds = 0;
+  let hoursInput = document.getElementById('hours');
+  let minutesInput = document.getElementById('minutes');
+  let secondsInput = document.getElementById('seconds');
+  let timerDisplay = document.getElementById('timer');
+  let startBtn = document.getElementById('startBtn');
+  let pauseBtn = document.getElementById('pauseBtn');
+  let resetBtn = document.getElementById('resetBtn');
+
+  function startTimer() {
+    totalSeconds = parseInt(hoursInput.value) * 3600 + parseInt(minutesInput.value) * 60 + parseInt(secondsInput.value);
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+
+  function updateTimer() {
+    if (totalSeconds <= 0) {
+      clearInterval(timerInterval);
+      timerDisplay.textContent = 'Timer Expired';
+    } else {
+      let hours = Math.floor(totalSeconds / 3600);
+      let minutes = Math.floor((totalSeconds % 3600) / 60);
+      let seconds = totalSeconds % 60;
+      timerDisplay.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+      totalSeconds--;
+    }
+  }
+
+  function pad(num) {
+    return num.toString().padStart(2, '0');
+  }
+
+  startBtn.addEventListener('click', startTimer);
+
+  pauseBtn.addEventListener('click', function() {
+    clearInterval(timerInterval);
+  });
+
+  resetBtn.addEventListener('click', function() {
+    clearInterval(timerInterval);
+    hoursInput.value = 0;
+    minutesInput.value = 0;
+    secondsInput.value = 0;
+    timerDisplay.textContent = '00:00:00';
+  });
+</script>
+
+</body>
+</html>
+
