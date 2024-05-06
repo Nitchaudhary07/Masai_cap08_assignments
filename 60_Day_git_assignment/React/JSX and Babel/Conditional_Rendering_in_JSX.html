@@ -10,17 +10,17 @@
   <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    const isMorning = true;
+    let isMorning = true;
 
-    const MorningMessage = () => {
+    let MorningMessage = () => {
       return <p>Good morning! Seize the day!</p>;
     }
 
-    const NightMessage = () => {
+    let NightMessage = () => {
       return <p>Good night! Rest well!</p>;
     }
 
-    const App = () => {
+    let App = () => {
       return (
         <div>
           {isMorning ? <MorningMessage /> : <NightMessage />}
