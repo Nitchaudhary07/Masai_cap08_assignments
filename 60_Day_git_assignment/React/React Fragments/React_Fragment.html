@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+  </head>
+  <style>
+    .main{
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;  
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      let App = () => {
+        let handleAlert = () => {
+          alert('Hello😊');
+        };
+
+        return (
+          <>
+            <p>React is a JavaScript library</p>
+            <div className="main" style={{ border: '1px solid black', padding: '12px', borderRadius: '10px'  }}>
+              <p>Click the below button to alert 'Hello'</p>
+              <button onClick={handleAlert}>Alert Hello</button>
+            </div>
+          </>
+        );
+      };
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
+
+
