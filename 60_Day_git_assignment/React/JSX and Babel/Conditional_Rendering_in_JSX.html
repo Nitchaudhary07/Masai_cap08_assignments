@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JSX and Babel</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const isMorning = true;
+
+    const MorningMessage = () => {
+      return <p>Good morning! Seize the day!</p>;
+    }
+
+    const NightMessage = () => {
+      return <p>Good night! Rest well!</p>;
+    }
+
+    const App = () => {
+      return (
+        <div>
+          {isMorning ? <MorningMessage /> : <NightMessage />}
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
