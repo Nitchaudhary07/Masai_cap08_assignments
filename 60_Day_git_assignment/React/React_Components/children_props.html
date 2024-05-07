@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function Image({ src }) {
+      return <img src={src} alt="Gallery Image" style={{ width: '100%', height: '200px' ,boxShadow: 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset',borderRadius:'10px'}} />;
+    }
+
+    function Gallery({ children }) {
+      return (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '15px' }}>
+          {children}
+        </div>
+      );
+    }
+
+    ReactDOM.render(
+      <Gallery>
+        <Image src="https://www.sticky.digital/wp-content/uploads/2013/11/img-6.jpg" />
+        <Image src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/8d/a4/8c.jpg" />
+        <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRdD8BIFIpXpVlbiqUBVl5Zp9SuUA7rAKX8rh6rLw4JmFRK5D8-3HMqBsy7qdEHB55enE&usqp=CAU"/>
+        <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNsoMDmus3oVM3y67oGOlFGvU7ovu5m7qzyiINYEYS7PG0ailzz8KWuiaWGEVWLUyuf9s&usqp=CAU" />
+        <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMogOKdClFz9scV7P3nBmQh4xHH-le4akosHL7ngwYdpq-LWyqrwR086TLuEIk8xwgrvs&usqp=CAU" />
+        <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtSXSCepb8VnpxB2sjBaz3IfcqI4qrnlSvKY3_YRKN5Ic0LJardqWzZeiW8nWZUxTFXfo&usqp=CAU" />
+        <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW6K0UogZdPETxkcX5oJzzzf83jglKVYVvtleOIEZi3H6WvpEFY3r9111zp7QnfCaPCIQ&usqp=CAU" />
+        <Image src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/74/fc/ec/caption.jpg?w=1000&h=800&s=1" />
+        <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiN13CZNG9qS29JJz8JIRq4S0nBO9x7MdMwZg3Leti4nb3qtTkSJ4P7t3ohOgF4iDP11I&usqp=CAU" />
+        <Image src="https://img.freepik.com/premium-photo/beautiful-mountains-ala-archa-national-park-bishkek-kyrgyzstan_323283-3475.jpg" />
+        <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBzNNhmHAWL6rJO0FTi0bY7EPAPisoWSx54kD1IWdwTigMcdsl5EljIY8YAIGjeyPeMko&usqp=CAU" />
+        <Image src="https://i0.wp.com/www.takeyourjacket.com/wp-content/uploads/2020/05/Ala-Archa-National-Park-featured-photo.jpg?fit=1920%2C1080&ssl=1" />
+      </Gallery>,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+</html>
