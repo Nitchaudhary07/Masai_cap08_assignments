@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Form</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+    let { useState } = React;
+
+    function App() {
+      let [hobbies, setHobbies] = useState(['']);
+
+      let addHobby = () => {
+        setHobbies([...hobbies, '']);
+      };
+
+      let removeHobby = (index) => {
+        let newHobbies = [...hobbies];
+        newHobbies.splice(index, 1);
+        setHobbies(newHobbies);
+      };
+
+      let handleChange = (value, index) => {
+        let newHobbies = [...hobbies];
+        newHobbies[index] = value;
+        setHobbies(newHobbies);
+      };
+
+      let handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(hobbies);
+      };
+      
+
+      return React.createElement('div', null,
+        React.createElement('form', { onSubmit: handleSubmit },
+          hobbies.map((hobby, index) =>
+            React.createElement('div', { key: index },
+              React.createElement('input', {
+                type: 'text',
+                value: hobby,
+                onChange: (e) => handleChange(e.target.value, index)
+              }),
+              index > 0 && React.createElement('button', {
+                type: 'button',
+                onClick: () => removeHobby(index)
+              }, 'Remove')
+            )
+          ),
+          React.createElement('button', {
+            type: 'button',
+            onClick: addHobby
+          }, 'Add Hobby'),
+          React.createElement('button', {
+            type: 'submit'
+          }, 'Submit')
+        )
+        
+      );
+    }
+
+
+    let reactRoot = ReactDOM.createRoot(document.getElementById("root"));
+    reactRoot.render(<App />);
+  </script>
+</html>

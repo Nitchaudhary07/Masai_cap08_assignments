@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz App</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    let { useState } = React;
+
+    function Quiz() {
+      const questions = [
+        {
+          question: "What is the capital of France?",
+          options: ["London", "Paris", "Berlin", "Madrid"],
+          correctAnswer: "Paris"
+        },
+        {
+          question: "Which planet is known as the Red Planet?",
+          options: ["Venus", "Mars", "Jupiter", "Saturn"],
+          correctAnswer: "Mars"
+        },
+        {
+          question: "What is 2 + 2?",
+          options: ["3", "4", "5", "6"],
+          correctAnswer: "4"
+        },
+        {
+          question: "The Dimond city of India?",
+          options: ["Jaipur", "Rachi", "Mumbai", "Surat"],
+          correctAnswer: "Surat"
+        },
+        {
+          question: "What is the chemical symbol for water?",
+          options: ["H2O", "CO2", "O2", "NaCl"],
+          correctAnswer: "H2O"
+        }
+        
+      ];
+
+      let [selectedAnswers, setSelectedAnswers] = useState(new Array(questions.length).fill(""));
+      let [showScore, setShowScore] = useState(false);
+      let [score, setScore] = useState(0);
+
+      let handleAnswerSelect = (index, answer) => {
+        let newSelectedAnswers = [...selectedAnswers];
+        newSelectedAnswers[index] = answer;
+        setSelectedAnswers(newSelectedAnswers);
+      };
+
+      let calculateScore = () => {
+        let newScore = 0;
+        questions.forEach((question, index) => {
+          if (question.correctAnswer === selectedAnswers[index]) {
+            newScore++;
+          }
+        });
+        setScore(newScore);
+        setShowScore(true);
+      };
+
+      let restartQuiz = () => {
+        setSelectedAnswers(new Array(questions.length).fill(""));
+        setShowScore(false);
+        setScore(0);
+      };
+
+      return (
+        <div>
+          {!showScore ? (
+            <div>
+              {questions.map((question, index) => (
+                <div key={index}>
+                  <h3>{question.question}</h3>
+                  {question.options.map((option, optionIndex) => (
+                    <div key={optionIndex}>
+                      <input
+                        type="radio"
+                        id={`option-${index}-${optionIndex}`}
+                        name={`question-${index}`}
+                        value={option}
+                        checked={selectedAnswers[index] === option}
+                        onChange={() => handleAnswerSelect(index, option)}
+                      />
+                      <label htmlFor={`option-${index}-${optionIndex}`}>{option}</label>
+                    </div>
+                  ))}
+                </div>
+              ))}
+              <button onClick={calculateScore}>Submit</button>
+            </div>
+          ) : (
+            <div>
+              <h2>Your Score: {score}/{questions.length}</h2>
+              <button onClick={restartQuiz}>Restart Quiz</button>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    let reactRoot = ReactDOM.createRoot(document.getElementById("root"));
+    reactRoot.render(<Quiz />);
+  </script>
+</body>
+</html>

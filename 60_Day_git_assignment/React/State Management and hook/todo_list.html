@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List</title>
+</head>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #1d9e9e;
+  margin: 0;
+  padding: 0;
+  
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 15px;
+}
+
+button:hover {
+  background-color: #ca520d;
+}
+
+ul {
+  padding: 0;
+  width: 500px;
+  margin-left: 15px;
+}
+
+li {
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+li input {
+  margin-right: 10px;
+}
+
+.completed span {
+  color: #21598a;
+}
+
+</style>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const { useState } = React;
+
+    function TodoList() {
+      const [todos, setTodos] = useState([]);
+      const [filter, setFilter] = useState("All");
+
+      const handleAddTodo = (todoText) => {
+        setTodos([...todos, { id: Date.now(), text: todoText, completed: false }]);
+      };
+
+      const handleToggleComplete = (id) => {
+        const updatedTodos = todos.map(todo =>
+          todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        );
+        setTodos(updatedTodos);
+      };
+
+      const handleDeleteTodo = (id) => {
+        const updatedTodos = todos.filter(todo => todo.id !== id);
+        setTodos(updatedTodos);
+      };
+
+      const filteredTodos = filter === "All" ? todos :
+        filter === "Active" ? todos.filter(todo => !todo.completed) :
+        filter === "Completed" ? todos.filter(todo => todo.completed) :
+        [];
+
+      return (
+        <div>
+          <input type="text" id="todoInput" placeholder="Enter new task" />
+          <button onClick={() => handleAddTodo(document.getElementById('todoInput').value)}>Add Task</button>
+          <div>
+            <button onClick={() => setFilter("All")}>All</button>
+            <button onClick={() => setFilter("Active")}>Active</button>
+            <button onClick={() => setFilter("Completed")}>Completed</button>
+          </div>
+          <ul>
+            {filteredTodos.map(todo => (
+              <li key={todo.id} style={{ color: todo.completed ? 'green' : 'red' }}>
+                <input
+                  type="checkbox"
+                  checked={todo.completed}
+                  onChange={() => handleToggleComplete(todo.id)}
+                />
+                 <span>{todo.text}</span>
+                <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<TodoList />, document.getElementById('root'));
+  </script>
+</body>
+</html>
