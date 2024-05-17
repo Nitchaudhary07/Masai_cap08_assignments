@@ -1,0 +1,153 @@
+<!-- 
+    1.
+
+
+Your application should have a component called User which accepts the following props name, age, gender, email, image and display a user card.
+
+Number of User Cards = Number of Users
+
+const users = [
+  {
+    id: 1,
+    name: "John",
+    age: 23,
+    gender: "male",
+    email: "atuny0@sohu.com",
+    image: "https://robohash.org/Terry.png?set=set4",
+  },
+  {
+    id: 2,
+    name: "Terry",
+    age: 50,
+    gender: "male",
+    email: "terry@sohu.com",
+  },
+  {
+    id: 3,
+    name: "Jane",
+    age: 25,
+    gender: "female",
+    email: "jane@sohu.com",
+  },
+]; -->
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Cards</title>
+  <style>
+    .user-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+    }
+    .user-image {
+      margin-right: 16px;
+    }
+    .user-image img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+    .user-details {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1>User Cards</h1>
+  <div id="user-list"></div>
+
+  <script>
+    const users = [
+      {
+        id: 1,
+        name: "John",
+        age: 23,
+        gender: "male",
+        email: "atuny0@sohu.com",
+        image: "https://robohash.org/Terry.png?set=set4",
+      },
+      {
+        id: 2,
+        name: "Terry",
+        age: 50,
+        gender: "male",
+        email: "terry@sohu.com",
+      },
+      {
+        id: 3,
+        name: "Jane",
+        age: 25,
+        gender: "female",
+        email: "jane@sohu.com",
+      },
+    ];
+
+    const userListElement = document.getElementById('user-list');
+
+    users.forEach(user => {
+      const userCard = `
+        <div class="user-card">
+          <div class="user-image">
+            <img src="${user.image || 'https://robohash.org/default.png'}" alt="${user.name}">
+          </div>
+          <div class="user-details">
+            <h2>${user.name}</h2>
+            <p>Age: ${user.age}</p>
+            <p>Gender: ${user.gender}</p>
+            <p>Email: ${user.email}</p>
+          </div>
+        </div>
+      `;
+      userListElement.innerHTML += userCard;
+    });
+  </script>
+</body>
+</html> -->
+
+
+
+
+
+<!-- Install and use Axios to make API calls
+
+Your Task is to get a list of users from the API endpoint https://reqres.in/api/users and display those users information in the form of card as soon as component mounts
+
+You can use the following App template
+
+import { useState, useEffect } from "react";
+
+function App() {
+  const [users, setUsers] = useState([]);
+
+  async function fetchAndUpdateData() {
+    try {
+       // complete code
+    } catch (error) {
+       // complete code
+    }
+  }
+
+  useEffect(function () {
+    fetchAndUpdateData();
+  }, []);
+
+  return (
+    <div className="App">
+      <h1>List of users</h1>
+      <div>
+        // complete code
+      </div>
+    </div>
+  );
+}
+
+export default App; -->
+

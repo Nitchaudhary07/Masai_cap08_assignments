@@ -1,0 +1,276 @@
+<!-- React - PSC 1
+
+Boiler Plate Code
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // Your JSX code here
+    </script>
+  </body>
+</html>
+
+Text : "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+
+Task 1 : 1. Render this text, black background, white color, font size should be 48px
+
+Task 2 : 1. Add a variable in your application called theme. value can be "dark", "light" 2. By default dark theme. when change to light, it should be reverse ( light theme = white background, dark color ) 3. Text should be "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..." if it is light theme
+
+
+
+ -->
+
+
+
+
+<!-- React - PSC 2
+
+Display all the details of the user in UI
+
+One Line - One Property which contain Property Name and Property Value
+
+Gender value text should be blue for male and pink for female
+
+      let user = {
+        id: 1,
+        firstName: "Terry",
+        lastName: "Medhurst",
+        maidenName: "Smitham",
+        age: 50,
+        gender: "male",
+        email: "atuny0@sohu.com",
+        phone: "+63 791 675 8914",
+        username: "atuny0",
+        password: "9uQFF1Lh",
+        birthDate: "2000-12-25",
+        image: "https://robohash.org/Terry.png?set=set4",
+        bloodGroup: "A-",
+        height: 189,
+        weight: 75.4,
+        eyeColor: "Green",
+        hair: {
+          color: "Black",
+          type: "Strands",
+        },
+        domain: "slashdot.org",
+        ip: "117.29.86.254",
+        address: {
+          address: "1745 T Street Southeast",
+          city: "Washington",
+          coordinates: {
+            lat: 38.867033,
+            lng: -76.979235,
+          },
+          postalCode: "20020",
+          state: "DC",
+        },
+        macAddress: "13:69:BA:56:A3:74",
+        university: "Capitol University",
+        bank: {
+          cardExpire: "06/22",
+          cardNumber: "50380955204220685",
+          cardType: "maestro",
+          currency: "Peso",
+          iban: "NO17 0695 2754 967",
+        },
+        company: {
+          address: {
+            address: "629 Debbie Drive",
+            city: "Nashville",
+            coordinates: {
+              lat: 36.208114,
+              lng: -86.58621199999999,
+            },
+            postalCode: "37076",
+            state: "TN",
+          },
+          department: "Marketing",
+          name: "Blanda-O'Keefe",
+          title: "Help Desk Operator",
+        },
+        ein: "20-9487066",
+        ssn: "661-64-2976",
+        userAgent: "Mozilla/5.0 ...",
+      };
+ -->
+
+
+<!-- 
+ React PSC - 3
+
+Complete the following code such that items are in the form of ordered list
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const fruits = ["Apple", "Mango", "Banana", "Kiwi", "Orange"];
+      const vegetables = ["Potato", "Tomato", "Cabbage", "Onion"];
+
+      function DisplayList(list) {
+        // Returns items in list in the form of ordered list
+      }
+
+      function App() {
+        return (
+          <div>
+            <DisplayList list={fruits} />
+            <DisplayList list={vegetables} />
+          </div>
+        );
+      }
+
+      const rootElement = document.getElementById("root");
+      const reactRoot = ReactDOM.createRoot(rootElement);
+
+      reactRoot.render(<App />);
+    </script>
+  </body>
+</html> -->
+
+
+<!-- 
+Create a counter application which has value called count. the initial value of count is 90
+There should be a button called increase count which upon clicking should increase the value of count by 8
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example 1</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script type="text/babel">
+      function App() {
+
+
+        return (
+          <div>
+
+          </div>
+        );
+      }
+
+      let rootElement = document.getElementById("root");
+      ReactDOM.createRoot(rootElement).render(<App />);
+    </script>
+  </body>
+</html> -->
+
+
+
+<!-- Create an application similar to the one done in session wherein user can input his favourite superhero name and this value should be visible in UI
+
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example 3</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script type="text/babel">
+      function App() {
+
+        return (
+          <div>
+            <input
+              placeholder="Enter your superhero name"
+            />
+          </div>
+        );
+      }
+
+      let rootElement = document.getElementById("root");
+      ReactDOM.createRoot(rootElement).render(<App />);
+    </script>
+  </body>
+</html> -->
+
+
+<!-- Explore the following example using React Developer Tool Chrome Extension
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example 3</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script type="text/babel">
+      function App() {
+        const [name, setName] = React.useState("");
+        const [age, setAge] = React.useState(26);
+        const [isSingle, setIsSingle] = React.useState(true);
+
+        function handleNameChange(event) {
+          setName(event.target.value);
+        }
+
+        function handleAgeChange(event) {
+          setAge(event.target.value);
+        }
+
+        function handleIsSingleStatusChange() {
+          setIsSingle(!isSingle);
+        }
+
+        return (
+          <div>
+            <input
+              placeholder="Enter your name"
+              onChange={handleNameChange}
+              value={name}
+            />
+            <hr />
+            <input type="number" value={age} onChange={handleAgeChange} />
+            <hr />
+
+            <label>
+              Is Single :
+              <input
+                type="checkbox"
+                checked={isSingle}
+                onChange={handleIsSingleStatusChange}
+              />
+            </label>
+          </div>
+        );
+      }
+
+      let rootElement = document.getElementById("root");
+      ReactDOM.createRoot(rootElement).render(<App />);
+    </script>
+  </body>
+</html>
+ -->

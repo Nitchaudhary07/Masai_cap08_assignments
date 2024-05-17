@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Four Wheeler Automobile Inheritance</title>
+</head>
+<body>
+  <script>
+    // Define a Vehicle constructor function
+    function Vehicle(make, model, year) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+    }
+
+    // Add a method to the Vehicle prototype
+    Vehicle.prototype.getDetails = function() {
+        return `${this.year} ${this.make} ${this.model}`;
+    };
+
+    // Define a FourWheeler constructor function
+    function FourWheeler(make, model, year, color) {
+        Vehicle.call(this, make, model, year); // Call the superclass constructor
+        this.color = color;
+    }
+
+    // Set up inheritance using prototype
+    FourWheeler.prototype = Object.create(Vehicle.prototype);
+    FourWheeler.prototype.constructor = FourWheeler;
+
+    // Add a method to the FourWheeler prototype
+    FourWheeler.prototype.getColor = function() {
+        return this.color;
+    };
+
+    // Create instances of FourWheeler
+    var car1 = new FourWheeler("Toyota", "Camry", 2020, "Red");
+    var car2 = new FourWheeler("Honda", "Accord", 2019, "Blue");
+
+    // Use methods inherited from Vehicle prototype
+    console.log(car1.getDetails()); // Output: 2020 Toyota Camry
+    console.log(car2.getDetails()); // Output: 2019 Honda Accord
+
+    // Use method specific to FourWheeler
+    console.log(car1.getColor()); // Output: Red
+    console.log(car2.getColor()); // Output: Blue
+  </script>
+</body>
+</html>
